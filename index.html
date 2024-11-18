@@ -6,7 +6,7 @@ classDiagram
     Portfolio --> Page : contient
     Portfolio --> Projet : contient
     Portfolio --> CV : contient
-
+    Portfolio --> Badge : contient
 
     class Portfolio {
         +String titre
@@ -23,6 +23,9 @@ classDiagram
         +String url
     }
     class CV {
+        +String fichier
+    }
+    class Badge {
         +String fichier
     }
 
