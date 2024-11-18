@@ -3,74 +3,134 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Page personnelle de [Ton Nom]. Découvrez mes projets, compétences et plus.">
-    <title>[Ton Nom] - Page Personnelle</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Les Tracteurs Agricoles</title>
+    <style>
+        /* Réinitialisation des marges et padding pour un design uniforme */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+
+        header {
+            background-color: #2c3e50;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 3em;
+            margin-bottom: 10px;
+        }
+
+        header p {
+            font-size: 1.2em;
+        }
+
+        /* Section des tracteurs */
+        .tractor-section {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            padding: 20px;
+            background-color: #fff;
+        }
+
+        .tractor-card {
+            width: 30%;
+            margin: 15px;
+            background-color: #ecf0f1;
+            border: 2px solid #bdc3c7;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .tractor-card img {
+            width: 100%;
+            height: auto;
+        }
+
+        .tractor-card h3 {
+            text-align: center;
+            padding: 10px 0;
+            font-size: 1.5em;
+            background-color: #3498db;
+            color: white;
+        }
+
+        .tractor-card p {
+            padding: 10px;
+            text-align: justify;
+            font-size: 1em;
+            color: #7f8c8d;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 10px;
+            background-color: #2c3e50;
+            color: white;
+        }
+
+        footer p {
+            font-size: 1em;
+        }
+
+        /* Responsive design pour les petits écrans */
+        @media (max-width: 768px) {
+            .tractor-card {
+                width: 45%;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .tractor-card {
+                width: 100%;
+            }
+        }
+    </style>
 </head>
 <body>
     <!-- En-tête -->
     <header>
-        <nav>
-            <ul>
-                <li><a href="#about">À propos</a></li>
-                <li><a href="#skills">Compétences</a></li>
-                <li><a href="#projects">Projets</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-        </nav>
+        <h1>Bienvenue dans le monde des Tracteurs Agricoles</h1>
+        <p>Découvrez les meilleurs modèles pour vos besoins agricoles.</p>
     </header>
 
-    <!-- Section À propos -->
-    <section id="about">
-        <h1>Bonjour, je suis [Ton Nom]</h1>
-        <p>
-            Je suis [une brève description de toi : étudiant(e), professionnel(le), passionné(e) par...]. J'aime [décrire tes passions ou ton parcours]. 
-            Je suis actuellement à la recherche de nouvelles opportunités et projets intéressants.
-        </p>
-        <img src="ton-image.jpg" alt="Photo de [Ton Nom]" style="width: 200px; height: auto;">
-    </section>
-
-    <!-- Section Compétences -->
-    <section id="skills">
-        <h2>Compétences</h2>
-        <ul>
-            <li>Développement web (HTML, CSS, JavaScript)</li>
-            <li>Design graphique (Photoshop, Illustrator)</li>
-            <li>Rédaction de contenu</li>
-            <li>Gestion de projets</li>
-            <li>Langues: Français, Anglais (autres à mentionner)</li>
-        </ul>
-    </section>
-
-    <!-- Section Projets -->
-    <section id="projects">
-        <h2>Mes Projets</h2>
-        <div>
-            <h3>Projet 1 : [Nom du projet]</h3>
-            <p>Description du projet. Ce projet consiste en...</p>
+    <!-- Section des tracteurs -->
+    <div class="tractor-section">
+        <div class="tractor-card">
+            <img src="https://via.placeholder.com/400x300?text=Tracteur+1" alt="Tracteur 1">
+            <h3>Tracteur John Deere 6250R</h3>
+            <p>Le John Deere 6250R est un tracteur haut de gamme, idéal pour les grandes exploitations agricoles. Il offre une puissance de 250 chevaux et une efficacité énergétique optimale.</p>
         </div>
-        <div>
-            <h3>Projet 2 : [Nom du projet]</h3>
-            <p>Description du projet. Ce projet consiste en...</p>
+
+        <div class="tractor-card">
+            <img src="https://via.placeholder.com/400x300?text=Tracteur+2" alt="Tracteur 2">
+            <h3>Tracteur Case IH Puma 150</h3>
+            <p>Le Case IH Puma 150 est un modèle polyvalent, réputé pour sa robustesse et ses performances exceptionnelles en terrains difficiles.</p>
         </div>
-        <!-- Ajoute d'autres projets selon ton parcours -->
-    </section>
 
-    <!-- Section Contact -->
-    <section id="contact">
-        <h2>Contactez-moi</h2>
-        <p>Tu peux me contacter par email à : <a href="mailto:ton-email@example.com">ton-email@example.com</a></p>
-        <p>Ou via mes réseaux sociaux :</p>
-        <ul>
-            <li><a href="https://www.linkedin.com/in/ton-profile">LinkedIn</a></li>
-            <li><a href="https://github.com/ton-username">GitHub</a></li>
-            <!-- Ajoute d'autres liens de réseaux sociaux -->
-        </ul>
-    </section>
+        <div class="tractor-card">
+            <img src="https://via.placeholder.com/400x300?text=Tracteur+3" alt="Tracteur 3">
+            <h3>Tracteur Massey Ferguson 7700S</h3>
+            <p>Le Massey Ferguson 7700S est conçu pour maximiser l'efficacité de vos travaux agricoles. Sa technologie avancée garantit un confort optimal pour l'opérateur.</p>
+        </div>
+    </div>
 
-    <!-- Pied de page -->
+    <!-- Footer -->
     <footer>
-        <p>&copy; 2024 [Ton Nom]. Tous droits réservés.</p>
+        <p>&copy; 2024 Les Tracteurs Agricoles. Tous droits réservés.</p>
     </footer>
 </body>
 </html>
