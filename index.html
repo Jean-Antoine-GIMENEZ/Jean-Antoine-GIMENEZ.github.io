@@ -3,134 +3,212 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Les Tracteurs Agricoles</title>
+    <title>Changement d'Images avec Traînée et Explosions</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <style>
-        /* Réinitialisation des marges et padding pour un design uniforme */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
         body {
-            font-family: Arial, sans-serif;
-            line-height: 1.6;
-            background-color: #f4f4f4;
-            color: #333;
+            margin: 0;
+            overflow: hidden; /* Pour empêcher le défilement */
         }
-
-        header {
-            background-color: #2c3e50;
-            color: white;
-            padding: 20px;
-            text-align: center;
+        h1 {
+            margin: 20px 0;
+            color: #343a40;
+            position: absolute;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 10;
         }
-
-        header h1 {
-            font-size: 3em;
-            margin-bottom: 10px;
-        }
-
-        header p {
-            font-size: 1.2em;
-        }
-
-        /* Section des tracteurs */
-        .tractor-section {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-around;
-            padding: 20px;
-            background-color: #fff;
-        }
-
-        .tractor-card {
-            width: 30%;
-            margin: 15px;
-            background-color: #ecf0f1;
-            border: 2px solid #bdc3c7;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
-
-        .tractor-card img {
+        #border {
+            position: absolute;
+            top: 0;
+            left: 0;
             width: 100%;
+            height: 100%;
+            background-color: rgba(200, 200, 200, 0.5); /* Couleur initiale */
+            z-index: 0; /* Derrière les images */
+        }
+        .dynamicImage {
+            position: absolute;
+            width: 200px; /* Taille initiale de l'image agrandie */
             height: auto;
+            z-index: 1; /* Au-dessus du rectangle */
         }
-
-        .tractor-card h3 {
-            text-align: center;
-            padding: 10px 0;
-            font-size: 1.5em;
-            background-color: #3498db;
-            color: white;
+        canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 0; /* Derrière les images */
         }
-
-        .tractor-card p {
-            padding: 10px;
-            text-align: justify;
-            font-size: 1em;
-            color: #7f8c8d;
+        .explosion {
+            position: absolute;
+            width: 50px; /* Taille de l'explosion */
+            height: 50px;
+            background-image: url('explosion.png'); /* Chemin de votre image d'explosion */
+            background-size: cover;
+            animation: explode 0.5s forwards;
         }
-
-        /* Footer */
-        footer {
-            text-align: center;
-            padding: 10px;
-            background-color: #2c3e50;
-            color: white;
-        }
-
-        footer p {
-            font-size: 1em;
-        }
-
-        /* Responsive design pour les petits écrans */
-        @media (max-width: 768px) {
-            .tractor-card {
-                width: 45%;
+        @keyframes explode {
+            0% {
+                transform: scale(1);
+                opacity: 1;
             }
-        }
-
-        @media (max-width: 480px) {
-            .tractor-card {
-                width: 100%;
+            100% {
+                transform: scale(3);
+                opacity: 0;
             }
         }
     </style>
 </head>
 <body>
-    <!-- En-tête -->
-    <header>
-        <h1>Bienvenue dans le monde des Tracteurs Agricoles</h1>
-        <p>Découvrez les meilleurs modèles pour vos besoins agricoles.</p>
-    </header>
 
-    <!-- Section des tracteurs -->
-    <div class="tractor-section">
-        <div class="tractor-card">
-            <img src="https://via.placeholder.com/400x300?text=Tracteur+1" alt="Tracteur 1">
-            <h3>Tracteur John Deere 6250R</h3>
-            <p>Le John Deere 6250R est un tracteur haut de gamme, idéal pour les grandes exploitations agricoles. Il offre une puissance de 250 chevaux et une efficacité énergétique optimale.</p>
-        </div>
+<h1>Guéri toi JA</h1>
+<div id="border"></div> <!-- Grand rectangle -->
+<canvas id="trailCanvas"></canvas> <!-- Canevas pour les traînées -->
+<!-- Zone pour afficher les images dynamiques -->
+<div id="imageContainer"></div>
 
-        <div class="tractor-card">
-            <img src="https://via.placeholder.com/400x300?text=Tracteur+2" alt="Tracteur 2">
-            <h3>Tracteur Case IH Puma 150</h3>
-            <p>Le Case IH Puma 150 est un modèle polyvalent, réputé pour sa robustesse et ses performances exceptionnelles en terrains difficiles.</p>
-        </div>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
-        <div class="tractor-card">
-            <img src="https://via.placeholder.com/400x300?text=Tracteur+3" alt="Tracteur 3">
-            <h3>Tracteur Massey Ferguson 7700S</h3>
-            <p>Le Massey Ferguson 7700S est conçu pour maximiser l'efficacité de vos travaux agricoles. Sa technologie avancée garantit un confort optimal pour l'opérateur.</p>
-        </div>
-    </div>
+<script>
+    let currentImageIndex = 0;
+    const images = [
+        'image_rip.jpg',
+        'image_secret.png',
+        'image_secret_2.png',
+        'image_secret_3.jpg',
+        'image_secret_4.jpg',
+        'image_secret_5.png',
+        'image_secret_6.jpg'
+    ];
 
-    <!-- Footer -->
-    <footer>
-        <p>&copy; 2024 Les Tracteurs Agricoles. Tous droits réservés.</p>
-    </footer>
+    const colors = [
+        'rgba(255, 0, 0, 0.5)', // Rouge pour image_rip
+        'rgba(0, 255, 0, 0.5)', // Vert pour image_secret
+        'rgba(255, 0, 0, 0.5)', // Rouge pour image_secret_2
+        'rgba(0, 255, 0, 0.5)', // Vert pour image_secret_3
+        'rgba(0, 0, 255, 0.5)', // Bleu pour image_secret_4
+        'rgba(255, 0, 0, 0.5)', // Rouge pour image_secret_5
+        'rgba(0, 0, 255, 0.5)'  // Bleu pour image_secret_6
+    ];
+
+    const imageContainer = document.getElementById('imageContainer');
+    const canvas = document.getElementById('trailCanvas');
+    const ctx = canvas.getContext('2d');
+
+    // Ajuste le canevas à la taille de la fenêtre
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    function createImage() {
+        const imgElement = document.createElement('img');
+        imgElement.src = images[currentImageIndex];
+        imgElement.className = 'dynamicImage';
+        imgElement.style.left = Math.random() * (window.innerWidth - 200) + 'px'; // Position aléatoire
+        imgElement.style.top = Math.random() * (window.innerHeight - 200) + 'px';
+        imgElement.style.transform = `rotate(${Math.random() * 360}deg)`; // Rotation aléatoire initiale
+        imageContainer.appendChild(imgElement);
+
+        // Lancer l'animation pour cette image
+        animate(imgElement, currentImageIndex);
+
+        // Passer à l'image suivante
+        currentImageIndex = (currentImageIndex + 1) % images.length;
+    }
+
+    function animate(imgElement, index) {
+        let posX = parseFloat(imgElement.style.left);
+        let posY = parseFloat(imgElement.style.top);
+        let velocityX = Math.random() * 5 + 1; // Vitesse de déplacement horizontal aléatoire
+        let velocityY = Math.random() * 5 + 1; // Vitesse de déplacement vertical aléatoire
+        let acceleration = 0.5; // Accélération à chaque rebond
+
+        // Limiter la vitesse maximale
+        const maxSpeed = 100;
+
+        // Vitesse de rotation
+        const rotationSpeed = 5; // Vitesse de rotation augmentée
+
+        function move() {
+            // Dessiner la traînée
+            ctx.strokeStyle = colors[index]; // Couleur de la traînée selon l'image
+            ctx.lineWidth = 5;
+            ctx.beginPath();
+            ctx.moveTo(posX + imgElement.clientWidth / 2, posY + imgElement.clientHeight / 2);
+            ctx.lineTo(posX + imgElement.clientWidth / 2 + velocityX, posY + imgElement.clientHeight / 2 + velocityY);
+            ctx.stroke();
+
+            posX += velocityX;
+            posY += velocityY;
+
+            // Détecter les collisions avec les bords
+            if (posX + imgElement.clientWidth >= window.innerWidth || posX <= 0) {
+                velocityX = -velocityX; // Inverser la direction horizontale
+                changeImage(imgElement, index); // Changer l'image à chaque rebond
+                velocityX += Math.sign(velocityX) * acceleration; // Accélérer
+                if (Math.abs(velocityX) > maxSpeed) velocityX = maxSpeed * Math.sign(velocityX); // Limiter la vitesse
+                createExplosion(posX, posY); // Créer une explosion
+            }
+            if (posY + imgElement.clientHeight >= window.innerHeight || posY <= 0) {
+                velocityY = -velocityY; // Inverser la direction verticale
+                changeImage(imgElement, index); // Changer l'image à chaque rebond
+                velocityY += Math.sign(velocityY) * acceleration; // Accélérer
+                if (Math.abs(velocityY) > maxSpeed) velocityY = maxSpeed * Math.sign(velocityY); // Limiter la vitesse
+                createExplosion(posX, posY); // Créer une explosion
+            }
+
+            // Mettre à jour la position de l'image
+            imgElement.style.left = posX + 'px';
+            imgElement.style.top = posY + 'px';
+
+            // Rotation continue
+            let currentRotation = parseFloat(imgElement.style.transform.replace(/[^0-9.-]/g, '')) || 0;
+            currentRotation += rotationSpeed;
+            imgElement.style.transform = `rotate(${currentRotation}deg)`;
+
+            requestAnimationFrame(move); // Appel de la fonction de mouvement
+        }
+
+        move(); // Démarrer le mouvement
+    }
+
+    function changeImage(imgElement, index) {
+        imgElement.src = images[currentImageIndex];
+        imgElement.style.transform = `scale(1.5) rotate(${Math.random() * 360}deg)`; // Agrandir et rotation aléatoire
+
+        // Rétrograder la taille après un court délai
+        setTimeout(() => {
+            imgElement.style.transform = 'scale(1)';
+        }, 300); // Délai de retour à la taille originale
+
+        currentImageIndex = (currentImageIndex + 1) % images.length; // Passer à l'image suivante
+    }
+
+    function createExplosion(x, y) {
+        const explosionElement = document.createElement('div');
+        explosionElement.className = 'explosion';
+        explosionElement.style.left = (x + 50) + 'px'; // Centrer l'explosion
+        explosionElement.style.top = (y + 50) + 'px';
+        document.body.appendChild(explosionElement);
+
+        // Supprimer l'élément d'explosion après l'animation
+        explosionElement.addEventListener('animationend', () => {
+            explosionElement.remove();
+        });
+    }
+
+    window.onload = function() {
+        createImage(); // Créer la première image
+        setInterval(createImage, 3000); // Créer une nouvelle image toutes les 3 secondes
+    };
+
+    // Redimensionner le canevas si la fenêtre est redimensionnée
+    window.onresize = function() {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+    };
+</script>
 </body>
 </html>
