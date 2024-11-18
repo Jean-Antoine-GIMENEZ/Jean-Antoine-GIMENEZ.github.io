@@ -3,82 +3,71 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Site Animé - Bonjour</title>
+    <title>Animation Bonjour</title>
     <style>
-        /* Réinitialisation des marges et paddings */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
         body {
+            margin: 0;
+            overflow: hidden;
+            background-color: #f0f0f0;
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
-            background-color: #f0f8ff;
-            font-family: 'Arial', sans-serif;
-            overflow: hidden;
+            font-family: Arial, sans-serif;
         }
 
-        #container {
-            text-align: center;
-        }
-
-        #greeting {
-            font-size: 4rem;
+        .bonjour {
+            font-size: 40px;
+            font-weight: bold;
             color: #3498db;
-            opacity: 0;
-            transform: translateY(30px);
-            animation: fadeIn 2s forwards, moveUp 3s ease-out forwards;
+            position: absolute;
+            animation: growShrink 1.5s infinite, moveRandomly 5s infinite;
         }
 
-        @keyframes fadeIn {
-            0% {
-                opacity: 0;
-            }
-            100% {
-                opacity: 1;
-            }
-        }
-
-        @keyframes moveUp {
-            0% {
-                transform: translateY(30px);
-            }
-            100% {
-                transform: translateY(0);
-            }
-        }
-
-        /* Animation pour un effet d'agrandissement au clic */
-        @keyframes scaleUp {
+        @keyframes growShrink {
             0% {
                 transform: scale(1);
             }
+            50% {
+                transform: scale(2);
+            }
             100% {
-                transform: scale(1.2);
+                transform: scale(1);
+            }
+        }
+
+        @keyframes moveRandomly {
+            0% {
+                top: 50%;
+                left: 50%;
+            }
+            100% {
+                top: calc(100% * random());
+                left: calc(100% * random());
             }
         }
     </style>
 </head>
 <body>
-    <div id="container">
-        <h1 id="greeting">Bonjour !</h1>
-    </div>
+    <div class="bonjour">Bonjour</div>
 
     <script>
-        // Lorsque la page est chargée, l'animation démarre
-        window.onload = function() {
-            const greeting = document.getElementById('greeting');
-            greeting.style.animation = 'fadeIn 2s forwards, moveUp 3s ease-out forwards';
+        function randomPosition() {
+            let randomTop = Math.random() * 100;
+            let randomLeft = Math.random() * 100;
+            return { top: randomTop + '%', left: randomLeft + '%' };
+        }
 
-            // Ajout d'une animation au clic
-            greeting.addEventListener('click', () => {
-                greeting.style.animation = 'scaleUp 1s ease-out forwards';
-            });
-        };
+        // Fonction qui applique un déplacement aléatoire sur l'élément avec la classe .bonjour
+        function moveRandomly() {
+            const bonjourElement = document.querySelector('.bonjour');
+            const { top, left } = randomPosition();
+            bonjourElement.style.top = top;
+            bonjourElement.style.left = left;
+        }
+
+        // Déplace "Bonjour" toutes les 5 secondes
+        setInterval(moveRandomly, 5000);
     </script>
 </body>
 </html>
