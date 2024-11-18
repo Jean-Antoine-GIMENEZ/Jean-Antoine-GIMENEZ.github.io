@@ -3,212 +3,82 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Changement d'Images avec Traînée et Explosions</title>
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <title>Site Animé - Bonjour</title>
     <style>
-        body {
+        /* Réinitialisation des marges et paddings */
+        * {
             margin: 0;
-            overflow: hidden; /* Pour empêcher le défilement */
+            padding: 0;
+            box-sizing: border-box;
         }
-        h1 {
-            margin: 20px 0;
-            color: #343a40;
-            position: absolute;
-            top: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            z-index: 10;
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f8ff;
+            font-family: 'Arial', sans-serif;
+            overflow: hidden;
         }
-        #border {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(200, 200, 200, 0.5); /* Couleur initiale */
-            z-index: 0; /* Derrière les images */
+
+        #container {
+            text-align: center;
         }
-        .dynamicImage {
-            position: absolute;
-            width: 200px; /* Taille initiale de l'image agrandie */
-            height: auto;
-            z-index: 1; /* Au-dessus du rectangle */
+
+        #greeting {
+            font-size: 4rem;
+            color: #3498db;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeIn 2s forwards, moveUp 3s ease-out forwards;
         }
-        canvas {
-            position: absolute;
-            top: 0;
-            left: 0;
-            z-index: 0; /* Derrière les images */
-        }
-        .explosion {
-            position: absolute;
-            width: 50px; /* Taille de l'explosion */
-            height: 50px;
-            background-image: url('explosion.png'); /* Chemin de votre image d'explosion */
-            background-size: cover;
-            animation: explode 0.5s forwards;
-        }
-        @keyframes explode {
+
+        @keyframes fadeIn {
             0% {
-                transform: scale(1);
-                opacity: 1;
+                opacity: 0;
             }
             100% {
-                transform: scale(3);
-                opacity: 0;
+                opacity: 1;
+            }
+        }
+
+        @keyframes moveUp {
+            0% {
+                transform: translateY(30px);
+            }
+            100% {
+                transform: translateY(0);
+            }
+        }
+
+        /* Animation pour un effet d'agrandissement au clic */
+        @keyframes scaleUp {
+            0% {
+                transform: scale(1);
+            }
+            100% {
+                transform: scale(1.2);
             }
         }
     </style>
 </head>
 <body>
+    <div id="container">
+        <h1 id="greeting">Bonjour !</h1>
+    </div>
 
-<h1>Guéri toi JA</h1>
-<div id="border"></div> <!-- Grand rectangle -->
-<canvas id="trailCanvas"></canvas> <!-- Canevas pour les traînées -->
-<!-- Zone pour afficher les images dynamiques -->
-<div id="imageContainer"></div>
+    <script>
+        // Lorsque la page est chargée, l'animation démarre
+        window.onload = function() {
+            const greeting = document.getElementById('greeting');
+            greeting.style.animation = 'fadeIn 2s forwards, moveUp 3s ease-out forwards';
 
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-
-<script>
-    let currentImageIndex = 0;
-    const images = [
-        'image_rip.jpg',
-        'image_secret.png',
-        'image_secret_2.png',
-        'image_secret_3.jpg',
-        'image_secret_4.jpg',
-        'image_secret_5.png',
-        'image_secret_6.jpg'
-    ];
-
-    const colors = [
-        'rgba(255, 0, 0, 0.5)', // Rouge pour image_rip
-        'rgba(0, 255, 0, 0.5)', // Vert pour image_secret
-        'rgba(255, 0, 0, 0.5)', // Rouge pour image_secret_2
-        'rgba(0, 255, 0, 0.5)', // Vert pour image_secret_3
-        'rgba(0, 0, 255, 0.5)', // Bleu pour image_secret_4
-        'rgba(255, 0, 0, 0.5)', // Rouge pour image_secret_5
-        'rgba(0, 0, 255, 0.5)'  // Bleu pour image_secret_6
-    ];
-
-    const imageContainer = document.getElementById('imageContainer');
-    const canvas = document.getElementById('trailCanvas');
-    const ctx = canvas.getContext('2d');
-
-    // Ajuste le canevas à la taille de la fenêtre
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
-
-    function createImage() {
-        const imgElement = document.createElement('img');
-        imgElement.src = images[currentImageIndex];
-        imgElement.className = 'dynamicImage';
-        imgElement.style.left = Math.random() * (window.innerWidth - 200) + 'px'; // Position aléatoire
-        imgElement.style.top = Math.random() * (window.innerHeight - 200) + 'px';
-        imgElement.style.transform = `rotate(${Math.random() * 360}deg)`; // Rotation aléatoire initiale
-        imageContainer.appendChild(imgElement);
-
-        // Lancer l'animation pour cette image
-        animate(imgElement, currentImageIndex);
-
-        // Passer à l'image suivante
-        currentImageIndex = (currentImageIndex + 1) % images.length;
-    }
-
-    function animate(imgElement, index) {
-        let posX = parseFloat(imgElement.style.left);
-        let posY = parseFloat(imgElement.style.top);
-        let velocityX = Math.random() * 5 + 1; // Vitesse de déplacement horizontal aléatoire
-        let velocityY = Math.random() * 5 + 1; // Vitesse de déplacement vertical aléatoire
-        let acceleration = 0.5; // Accélération à chaque rebond
-
-        // Limiter la vitesse maximale
-        const maxSpeed = 100;
-
-        // Vitesse de rotation
-        const rotationSpeed = 5; // Vitesse de rotation augmentée
-
-        function move() {
-            // Dessiner la traînée
-            ctx.strokeStyle = colors[index]; // Couleur de la traînée selon l'image
-            ctx.lineWidth = 5;
-            ctx.beginPath();
-            ctx.moveTo(posX + imgElement.clientWidth / 2, posY + imgElement.clientHeight / 2);
-            ctx.lineTo(posX + imgElement.clientWidth / 2 + velocityX, posY + imgElement.clientHeight / 2 + velocityY);
-            ctx.stroke();
-
-            posX += velocityX;
-            posY += velocityY;
-
-            // Détecter les collisions avec les bords
-            if (posX + imgElement.clientWidth >= window.innerWidth || posX <= 0) {
-                velocityX = -velocityX; // Inverser la direction horizontale
-                changeImage(imgElement, index); // Changer l'image à chaque rebond
-                velocityX += Math.sign(velocityX) * acceleration; // Accélérer
-                if (Math.abs(velocityX) > maxSpeed) velocityX = maxSpeed * Math.sign(velocityX); // Limiter la vitesse
-                createExplosion(posX, posY); // Créer une explosion
-            }
-            if (posY + imgElement.clientHeight >= window.innerHeight || posY <= 0) {
-                velocityY = -velocityY; // Inverser la direction verticale
-                changeImage(imgElement, index); // Changer l'image à chaque rebond
-                velocityY += Math.sign(velocityY) * acceleration; // Accélérer
-                if (Math.abs(velocityY) > maxSpeed) velocityY = maxSpeed * Math.sign(velocityY); // Limiter la vitesse
-                createExplosion(posX, posY); // Créer une explosion
-            }
-
-            // Mettre à jour la position de l'image
-            imgElement.style.left = posX + 'px';
-            imgElement.style.top = posY + 'px';
-
-            // Rotation continue
-            let currentRotation = parseFloat(imgElement.style.transform.replace(/[^0-9.-]/g, '')) || 0;
-            currentRotation += rotationSpeed;
-            imgElement.style.transform = `rotate(${currentRotation}deg)`;
-
-            requestAnimationFrame(move); // Appel de la fonction de mouvement
-        }
-
-        move(); // Démarrer le mouvement
-    }
-
-    function changeImage(imgElement, index) {
-        imgElement.src = images[currentImageIndex];
-        imgElement.style.transform = `scale(1.5) rotate(${Math.random() * 360}deg)`; // Agrandir et rotation aléatoire
-
-        // Rétrograder la taille après un court délai
-        setTimeout(() => {
-            imgElement.style.transform = 'scale(1)';
-        }, 300); // Délai de retour à la taille originale
-
-        currentImageIndex = (currentImageIndex + 1) % images.length; // Passer à l'image suivante
-    }
-
-    function createExplosion(x, y) {
-        const explosionElement = document.createElement('div');
-        explosionElement.className = 'explosion';
-        explosionElement.style.left = (x + 50) + 'px'; // Centrer l'explosion
-        explosionElement.style.top = (y + 50) + 'px';
-        document.body.appendChild(explosionElement);
-
-        // Supprimer l'élément d'explosion après l'animation
-        explosionElement.addEventListener('animationend', () => {
-            explosionElement.remove();
-        });
-    }
-
-    window.onload = function() {
-        createImage(); // Créer la première image
-        setInterval(createImage, 3000); // Créer une nouvelle image toutes les 3 secondes
-    };
-
-    // Redimensionner le canevas si la fenêtre est redimensionnée
-    window.onresize = function() {
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
-    };
-</script>
+            // Ajout d'une animation au clic
+            greeting.addEventListener('click', () => {
+                greeting.style.animation = 'scaleUp 1s ease-out forwards';
+            });
+        };
+    </script>
 </body>
 </html>
