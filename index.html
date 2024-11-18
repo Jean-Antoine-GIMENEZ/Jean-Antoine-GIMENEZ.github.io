@@ -58,7 +58,6 @@
             return { top: randomTop + '%', left: randomLeft + '%' };
         }
 
-        // Fonction qui applique un déplacement aléatoire sur l'élément avec la classe .bonjour
         function moveRandomly() {
             const bonjourElement = document.querySelector('.bonjour');
             const { top, left } = randomPosition();
@@ -66,8 +65,7 @@
             bonjourElement.style.left = left;
         }
 
-        // Déplace "Bonjour" toutes les 5 secondes
-        setInterval(moveRandomly, 5000);
+        setInterval(moveRandomly, 50);
     </script>
 </body>
 </html>
