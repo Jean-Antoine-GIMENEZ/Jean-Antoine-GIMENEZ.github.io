@@ -1,71 +1,14 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Animation Bonjour</title>
-    <style>
-        body {
-            margin: 0;
-            overflow: hidden;
-            background-color: #f0f0f0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            font-family: Arial, sans-serif;
-        }
-
-        .bonjour {
-            font-size: 400px;
-            font-weight: bold;
-            color: #3498db;
-            position: absolute;
-            animation: growShrink 1.5s infinite, moveRandomly 5s infinite;
-        }
-
-        @keyframes growShrink {
-            0% {
-                transform: scale(1);
-            }
-            50% {
-                transform: scale(2);
-            }
-            100% {
-                transform: scale(1);
-            }
-        }
-
-        @keyframes moveRandomly {
-            0% {
-                top: 50%;
-                left: 50%;
-            }
-            100% {
-                top: calc(100% * random());
-                left: calc(100% * random());
-            }
-        }
-    </style>
-</head>
-<body>
-    <div class="bonjour">Bonjour</div>
-
-    <script>
-        function randomPosition() {
-            let randomTop = Math.random() * 100;
-            let randomLeft = Math.random() * 100;
-            return { top: randomTop + '%', left: randomLeft + '%' };
-        }
-
-        function moveRandomly() {
-            const bonjourElement = document.querySelector('.bonjour');
-            const { top, left } = randomPosition();
-            bonjourElement.style.top = top;
-            bonjourElement.style.left = left;
-        }
-
-        setInterval(moveRandomly, 50);
+<!doctype html>
+<html lang="en">
+  <body>
+    <pre class="mermaid">
+  graph LR
+      A --- B
+      B-->C[fa:fa-ban forbidden]
+      B-->D(fa:fa-spinner);
+    </pre>
+    <script type="module">
+      import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
     </script>
-</body>
+  </body>
 </html>
