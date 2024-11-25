@@ -1,6 +1,6 @@
 ---
 title: "Jean-Antoine Gimenez - CV"
-theme: hacker
+theme: cayman
 ---
 
 # Jean-Antoine Gimenez
@@ -76,7 +76,5 @@ theme: hacker
 - **Moto**
 - **Électronique/Informatique** : Objets connectés, analyse statistique, SIG
 - **Histoire** : XIXe et XXe siècles
-
+cayman
 ---
-
-*Site web basé sur un thème Hacker.*
