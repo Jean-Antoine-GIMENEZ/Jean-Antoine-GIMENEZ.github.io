@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nos Excuses</title>
+    <style>
+        /* Style général */
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        .container {
+            max-width: 600px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            background: #ffffff;
+            text-align: center;
+            opacity: 0;
+            transform: translateY(-20px);
+            transition: opacity 1s ease-out, transform 1s ease-out;
+        }
+
+        .container.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        h1 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        p {
+            color: #555;
+            line-height: 1.6;
+        }
+
+        .signature {
+            margin-top: 20px;
+            font-style: italic;
+            color: #888;
+        }
+
+        .names {
+            margin-top: 10px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .btn {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 16px;
+            color: #fff;
+            background-color: #007BFF;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container" id="card">
+        <h1>Nos sincères excuses</h1>
+        <p>Chère Laura et cher Rémi,</p>
+        <p>
+            Nous souhaitons exprimer nos plus sincères excuses pour ne pas vous avoir attendu 
+            lors de notre sortie au restaurant inter-administratif de Carcassonne. 
+            Jean-Antoine et Arnaud ont marché un peu trop vite, et, poussés par une faim dévorante, 
+            ils n'ont pas réalisé qu'ils vous laissaient derrière.
+        </p>
+        <p>
+            Nous espérons que vous comprendrez que ce n'était pas intentionnel et que nous ferons 
+            tout notre possible pour que cela ne se reproduise plus. La prochaine fois, nous marcherons à votre rythme.
+        </p>
+        <p class="signature">Avec toutes nos excuses,</p>
+        <p class="names">Jean-Antoine et Arnaud</p>
+        <button class="btn" id="animateBtn">Afficher avec animation</button>
+    </div>
+
+    <script>
+        // Animation JS
+        const card = document.getElementById('card');
+        const btn = document.getElementById('animateBtn');
+
+        btn.addEventListener('click', () => {
+            card.classList.add('visible');
+            btn.style.display = 'none'; // Cacher le bouton après clic
+        });
+    </script>
+</body>
+</html>
