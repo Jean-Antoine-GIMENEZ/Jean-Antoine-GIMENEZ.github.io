@@ -27,12 +27,14 @@
             text-align: center;
             opacity: 0;
             transform: translateY(-20px);
-            transition: opacity 1s ease-out, transform 1s ease-out;
+            animation: fadeIn 1.5s ease-out forwards;
         }
 
-        .container.visible {
-            opacity: 1;
-            transform: translateY(0);
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         h1 {
@@ -56,26 +58,10 @@
             font-weight: bold;
             color: #333;
         }
-
-        .btn {
-            margin-top: 20px;
-            padding: 10px 20px;
-            font-size: 16px;
-            color: #fff;
-            background-color: #007BFF;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-        }
-
-        .btn:hover {
-            background-color: #0056b3;
-        }
     </style>
 </head>
 <body>
-    <div class="container" id="card">
+    <div class="container">
         <h1>Nos sincères excuses</h1>
         <p>Chère Laura et cher Rémi,</p>
         <p>
@@ -90,18 +76,6 @@
         </p>
         <p class="signature">Avec toutes nos excuses,</p>
         <p class="names">Jean-Antoine et Arnaud</p>
-        <button class="btn" id="animateBtn">Afficher avec animation</button>
     </div>
-
-    <script>
-        // Animation JS
-        const card = document.getElementById('card');
-        const btn = document.getElementById('animateBtn');
-
-        btn.addEventListener('click', () => {
-            card.classList.add('visible');
-            btn.style.display = 'none'; // Cacher le bouton après clic
-        });
-    </script>
 </body>
 </html>
