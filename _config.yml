@@ -1,5 +1,6 @@
 # _config.yml
 title: Le site de JIJI
 description: "Un site GitHub Pages avec un joli thème"
-theme: jekyll-theme-hyde
+theme: minima
+
 
