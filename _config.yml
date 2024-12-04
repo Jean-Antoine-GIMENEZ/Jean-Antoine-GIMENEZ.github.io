@@ -1,5 +1,5 @@
 title: Jean-Antoine GIMENEZ
 description: Documentation de mon portfolio
-theme: jekyll-theme-merlot
+theme: jekyll-theme-spectre
 markdown: kramdown
 paginate: 5
