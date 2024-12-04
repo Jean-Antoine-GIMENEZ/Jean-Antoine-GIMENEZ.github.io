@@ -11,6 +11,12 @@ Bienvenue dans la documentation du portfolio.
   - [Projet](#projet)
   - [CV](#cv)
   - [Badge](#badge)
+- [Détails des Classes](#détails-des-classes)
+  - [Classe Portfolio](#classe-portfolio)
+  - [Classe Page](#classe-page)
+  - [Classe Projet](#classe-projet)
+  - [Classe CV](#classe-cv)
+  - [Classe Badge](#classe-badge)
 
 ---
 
@@ -125,3 +131,27 @@ Une section dédiée aux projets, incluant description et lien.
 ## Badge
 
 Une section pour les fichiers associés aux certifications et badges.
+
+---
+
+## Détails des Classes
+
+### Classe Portfolio
+
+Description de la classe Portfolio.
+
+### Classe Page
+
+Description de la classe Page.
+
+### Classe Projet
+
+Description de la classe Projet.
+
+### Classe CV
+
+Description de la classe CV.
+
+### Classe Badge
+
+Description de la classe Badge.
