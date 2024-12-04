@@ -1,6 +1,5 @@
-# _config.yml
-title: Le site de JIJI
-description: "Un site GitHub Pages avec un joli thème"
-theme: minima
-
-
+title: Mon Portfolio
+description: Documentation du Portfolio
+theme: jekyll-theme-cayman  # Vous pouvez choisir un autre thème
+markdown: kramdown  # Utilisez kramdown pour une meilleure gestion du markdown
+paginate: 5  # Pagination de 5 éléments par page
