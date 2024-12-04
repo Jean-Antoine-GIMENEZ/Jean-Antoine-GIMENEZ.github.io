@@ -1,5 +1,3 @@
 title: Mon Portfolio
 description: Documentation de mon portfolio
-theme: jekyll-theme-cayman
-markdown: kramdown
-paginate: 5
+theme: jekyll-theme-cayman  # Choisissez un thème GitHub Pages ici
