@@ -1,3 +1,65 @@
+<style>
+  .menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 200px;
+    height: 100%;
+    background-color: #f4f4f4;
+    padding: 10px;
+    box-shadow: 2px 0px 5px rgba(0, 0, 0, 0.1);
+  }
+
+  .content {
+    margin-left: 220px;
+    padding: 10px;
+  }
+
+  .menu ul {
+    list-style-type: none;
+    padding: 0;
+  }
+
+  .menu ul li {
+    margin: 10px 0;
+  }
+
+  .menu ul li a {
+    text-decoration: none;
+    color: #007bff;
+  }
+
+  .menu ul li a:hover {
+    text-decoration: underline;
+  }
+</style>
+
+<div class="menu">
+  <h2>Menu</h2>
+  <ul>
+    <li><a href="#présentation">Présentation</a></li>
+    <li><a href="#structure">Structure</a></li>
+    <ul>
+      <li><a href="#portfolio">Portfolio</a></li>
+      <li><a href="#page">Page</a></li>
+      <li><a href="#projet">Projet</a></li>
+      <li><a href="#cv">CV</a></li>
+      <li><a href="#badge">Badge</a></li>
+    </ul>
+    <li><a href="#détails-des-classes">Détails des Classes</a></li>
+    <ul>
+      <li><a href="#classe-portfolio">Classe Portfolio</a></li>
+      <li><a href="#classe-page">Classe Page</a></li>
+      <li><a href="#classe-projet">Classe Projet</a></li>
+      <li><a href="#classe-cv">Classe CV</a></li>
+      <li><a href="#classe-badge">Classe Badge</a></li>
+    </ul>
+  </ul>
+</div>
+
+<div class="content">
+
+
 # Portfolio
 
 Bienvenue dans la documentation du portfolio.
