@@ -1,127 +1,181 @@
-# Portfolio
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio</title>
+    <style>
+        /* Style général de la page */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
 
-Bienvenue dans la documentation du portfolio.
+        /* Menu à gauche */
+        .menu {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 200px;
+            height: 100%;
+            background-color: #f4f4f4;
+            padding: 20px;
+            box-shadow: 2px 0px 5px rgba(0, 0, 0, 0.1);
+        }
 
-## Menu
+        .menu h2 {
+            text-align: center;
+            color: #333;
+        }
 
-- [Présentation](#présentation)
-- [Structure](#structure)
-  - [Portfolio](#portfolio)
-  - [Page](#page)
-  - [Projet](#projet)
-  - [CV](#cv)
-  - [Badge](#badge)
+        .menu ul {
+            list-style-type: none;
+            padding: 0;
+        }
 
----
+        .menu ul li {
+            margin: 15px 0;
+        }
 
-## Présentation
+        .menu ul li a {
+            text-decoration: none;
+            color: #007bff;
+            font-size: 16px;
+        }
 
-Ce document détaille la structure d'un portfolio en utilisant un diagramme basé sur Mermaid.
+        .menu ul li a:hover {
+            text-decoration: underline;
+        }
 
----
+        /* Contenu principal */
+        .content {
+            margin-left: 220px;
+            padding: 20px;
+            flex-grow: 1;
+        }
 
-## Structure
+        /* Styles pour les sections */
+        h1, h2, h3 {
+            color: #333;
+        }
 
-### Portfolio
+        p {
+            font-size: 1rem;
+            color: #555;
+        }
 
-Le **Portfolio** contient :
-- [Page](#page)
-- [Projet](#projet)
-- [CV](#cv)
-- [Badge](#badge)
+        /* Séparateurs horizontaux */
+        hr {
+            border: 1px solid #ddd;
+        }
+    </style>
+</head>
+<body>
 
-### Page
+    <!-- Menu de navigation à gauche -->
+    <div class="menu">
+        <h2>Menu</h2>
+        <ul>
+            <li><a href="#présentation">Présentation</a></li>
+            <li><a href="#structure">Structure</a></li>
+            <li><a href="#portfolio">Portfolio</a></li>
+            <li><a href="#page">Page</a></li>
+            <li><a href="#projet">Projet</a></li>
+            <li><a href="#cv">CV</a></li>
+            <li><a href="#badge">Badge</a></li>
+        </ul>
+    </div>
 
-Une page du portfolio, contenant des informations spécifiques.
+    <!-- Contenu principal -->
+    <div class="content">
+        <h1>Portfolio</h1>
+        <p>Bienvenue dans la documentation du portfolio.</p>
 
-### Projet
+        ## Présentation
 
-Une section dédiée aux projets, incluant description et lien.
+        Ce document détaille la structure d'un portfolio en utilisant un diagramme basé sur Mermaid.
 
-### CV
+        <hr>
 
-#### Informations Personnelles
+        ## Structure
 
-- **Email** : [jean-antoine.gimenez@etudiant.univ-perp.fr](mailto:jean-antoine.gimenez@etudiant.univ-perp.fr)
-- **Téléphone** : 
-- **Adresse** : 
-- **Mobilité** : Aude  
-- **Âge** : 20 ans  
-- **Permis** : A2, B  
-- **Véhicule personnel**  
+        ### Portfolio
 
----
+        Le **Portfolio** contient :
+        - [Page](#page)
+        - [Projet](#projet)
+        - [CV](#cv)
+        - [Badge](#badge)
 
-#### Compétences
+        ### Page
 
-##### Base de données
-- Extraction, nettoyage et gestion de BDD
-- Requêtes SQL et création de tableaux de bord
-- Automatisation de collecte de données sous BDD
+        Une page du portfolio, contenant des informations spécifiques.
 
-##### Statistique
-- Conduite d’études statistiques
-- Analyse et communication des résultats
-- Conception de questionnaires
+        ### Projet
 
-##### Programmation
-- **Langages** : Python, SQL/PLSQL, R, SAS, HTML/CSS, JavaScript, PHP, SVG
-- **Logiciels** : Sphinx, Microsoft Office (Excel, Access, PowerPoint, Power BI), ArcGIS, QGIS, FME, pgAdmin
+        Une section dédiée aux projets, incluant description et lien.
 
----
+        ### CV
 
-#### Formations
+        #### Informations Personnelles
 
-- **BUT Science des Données (SD)**  
-  *Université de Perpignan, depuis septembre 2022*  
-- **Baccalauréat général**  
-  *Lycée Ernest Ferroul, 2022*  
-  Mention Bien | Mathématiques, Numérique Science Informatique, Mathématiques expertes  
+        - **Email** : [jean-antoine.gimenez@etudiant.univ-perp.fr](mailto:jean-antoine.gimenez@etudiant.univ-perp.fr)
+        - **Téléphone** :
+        - **Adresse** :
+        - **Mobilité** : Aude
+        - **Âge** : 20 ans
+        - **Permis** : A2, B
+        - **Véhicule personnel**
 
----
+        <hr>
 
-#### Expériences et Projets
+        #### Compétences
 
-##### Mise en place d'un Service SIG *(Stage + CDD)*  
-*Avril 2024 à août 2024 - Communauté des Communes La Domitienne (Vendres)*  
-- Diagnostic des données internes et externes  
-- Analyse des besoins métiers  
-- Recherche d’exemples d’organisation similaires  
+        ##### Base de données
+        - Extraction, nettoyage et gestion de BDD
+        - Requêtes SQL et création de tableaux de bord
+        - Automatisation de collecte de données sous BDD
 
-##### Création d'une application web GPS  
-*Octobre 2023 à janvier 2024 - IUT Carcassonne*  
-- Application web avec gestion de compte personnel  
-- Visualisation cartographique (SIG), itinéraires, et points de repère  
-- **Technologies** : MySQL, PHP, JavaScript  
+        ##### Statistique
+        - Conduite d’études statistiques
+        - Analyse et communication des résultats
+        - Conception de questionnaires
 
-##### Mise en œuvre d'une enquête  
-*Octobre 2022 à janvier 2023 - Carcassonne Agglo*  
-- Élaboration d’un questionnaire et saisie des réponses  
-- Analyse statistique (Sphinx) et rédaction de rapport  
-- Préconisations au commanditaire  
+        ##### Programmation
+        - **Langages** : Python, SQL/PLSQL, R, SAS, HTML/CSS, JavaScript, PHP, SVG
+        - **Logiciels** : Sphinx, Microsoft Office (Excel, Access, PowerPoint, Power BI), ArcGIS, QGIS, FME, pgAdmin
 
----
+        <hr>
 
-#### Langues
+        #### Formations
 
-- **Anglais** : B2  
-- **Espagnol** : B1  
+        - **BUT Science des Données (SD)**  
+          *Université de Perpignan, depuis septembre 2022*
 
----
+        #### Expériences et Projets
+        - **Création d'une application web GPS** *(Octobre 2023 à janvier 2024 - IUT Carcassonne)*  
+          - Application web avec gestion de compte personnel  
+          - Visualisation cartographique (SIG), itinéraires, et points de repère
+          
+        #### Langues
+        - **Anglais** : B2  
+        - **Espagnol** : B1
 
-#### Centres d'Intérêt
+        #### Centres d'Intérêt
+        - **Caisse à savon** : Construction et course de véhicules sans moteur
 
-- **Caisse à savon** : Construction et course de véhicules sans moteur  
-- **Moto**  
-- **Électronique/Informatique** : Objets connectés, analyse statistique, SIG  
-- **Histoire** : XIXe et XXe siècles  
+        <hr>
 
----
+        *Site web basé sur un thème Hacker.*
 
-*Site web basé sur un thème Hacker.*
+        <hr>
 
----
+        ## Badge
 
-## Badge
+        Une section pour les fichiers associés aux certifications et badges.
+    </div>
 
-Une section pour les fichiers associés aux certifications et badges.
+</body>
+</html>
