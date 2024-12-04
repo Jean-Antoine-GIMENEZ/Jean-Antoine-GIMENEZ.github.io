@@ -1,5 +1,5 @@
 # _config.yml
 title: Le site de JIJI
 description: "Un site GitHub Pages avec un joli thème"
-theme: hacker
+theme: jekyll-theme-hyde
 
