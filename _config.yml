@@ -1,5 +1,5 @@
 title: Mon Portfolio
 description: Documentation de mon portfolio
-theme: jekyll-theme-cushion
+theme: jekyll-theme-leap-day
 markdown: kramdown
 paginate: 5
