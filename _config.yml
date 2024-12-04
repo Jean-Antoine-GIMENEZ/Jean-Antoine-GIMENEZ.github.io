@@ -1,4 +1,4 @@
-x-special/nautilus-clipboard
-copy
-file:///home/eleve/Jean-Antoine-GIMENEZ.github.io/index.md
-
+# _config.yml
+title: Mon site
+description: "Un site GitHub Pages avec un joli thème"
+theme: minima
