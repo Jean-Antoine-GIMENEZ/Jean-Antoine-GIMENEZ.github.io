@@ -1,157 +1,129 @@
-# Portfolio
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio</title>
+    <style>
+        /* Styles pour le menu à droite */
+        body {
+            display: flex;
+            flex-direction: row;
+            font-family: Arial, sans-serif;
+            margin: 0;
+        }
 
-Bienvenue dans la documentation du portfolio.
+        .menu {
+            position: fixed;
+            top: 0;
+            right: 0;
+            width: 200px;
+            height: 100%;
+            background-color: #f4f4f4;
+            padding: 10px;
+            box-shadow: -2px 0px 5px rgba(0, 0, 0, 0.1);
+        }
 
-## Menu
+        .content {
+            margin-right: 220px;
+            padding: 20px;
+            flex-grow: 1;
+        }
 
-- [Présentation](#présentation)
-- [Structure](#structure)
-  - [Portfolio](#portfolio)
-  - [Page](#page)
-  - [Projet](#projet)
-  - [CV](#cv)
-  - [Badge](#badge)
-- [Détails des Classes](#détails-des-classes)
-  - [Classe Portfolio](#classe-portfolio)
-  - [Classe Page](#classe-page)
-  - [Classe Projet](#classe-projet)
-  - [Classe CV](#classe-cv)
-  - [Classe Badge](#classe-badge)
+        .menu ul {
+            list-style-type: none;
+            padding: 0;
+        }
 
----
+        .menu ul li {
+            margin: 10px 0;
+        }
 
-## Présentation
+        .menu ul li a {
+            text-decoration: none;
+            color: #007bff;
+        }
 
-Ce document détaille la structure d'un portfolio en utilisant un diagramme basé sur Mermaid.
+        .menu ul li a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
 
----
+    <!-- Menu à droite -->
+    <div class="menu">
+        <h2>Menu</h2>
+        <ul>
+            <li><a href="#présentation">Présentation</a></li>
+            <li><a href="#structure">Structure</a></li>
+            <li><a href="#portfolio">Portfolio</a></li>
+            <li><a href="#page">Page</a></li>
+            <li><a href="#projet">Projet</a></li>
+            <li><a href="#cv">CV</a></li>
+            <li><a href="#badge">Badge</a></li>
+        </ul>
+    </div>
 
-## Structure
+    <!-- Contenu principal -->
+    <div class="content">
+        <h1>Portfolio</h1>
+        <p>Bienvenue dans la documentation du portfolio.</p>
 
-### Portfolio
+        ## Présentation
 
-Le **Portfolio** contient :
-- [Page](#page)
-- [Projet](#projet)
-- [CV](#cv)
-- [Badge](#badge)
+        Ce document détaille la structure d'un portfolio en utilisant un diagramme basé sur Mermaid.
 
-### Page
+        ## Structure
 
-Une page du portfolio, contenant des informations spécifiques.
+        ### Portfolio
 
-### Projet
+        Le **Portfolio** contient :
+        - [Page](#page)
+        - [Projet](#projet)
+        - [CV](#cv)
+        - [Badge](#badge)
 
-Une section dédiée aux projets, incluant description et lien.
+        ### Page
 
-### CV
+        Une page du portfolio, contenant des informations spécifiques.
 
-#### Informations Personnelles
+        ### Projet
 
-- **Email** : [jean-antoine.gimenez@etudiant.univ-perp.fr](mailto:jean-antoine.gimenez@etudiant.univ-perp.fr)
-- **Téléphone** : 
-- **Adresse** : 
-- **Mobilité** : Aude  
-- **Âge** : 20 ans  
-- **Permis** : A2, B  
-- **Véhicule personnel**  
+        Une section dédiée aux projets, incluant description et lien.
 
----
+        ### CV
 
-#### Compétences
+        #### Informations Personnelles
+        - **Email** : [jean-antoine.gimenez@etudiant.univ-perp.fr](mailto:jean-antoine.gimenez@etudiant.univ-perp.fr)
+        - **Téléphone** :
+        - **Adresse** :
+        - **Mobilité** : Aude
+        - **Âge** : 20 ans
+        - **Permis** : A2, B
+        - **Véhicule personnel**
 
-##### Base de données
-- Extraction, nettoyage et gestion de BDD
-- Requêtes SQL et création de tableaux de bord
-- Automatisation de collecte de données sous BDD
+        #### Compétences
 
-##### Statistique
-- Conduite d’études statistiques
-- Analyse et communication des résultats
-- Conception de questionnaires
+        - **Langages** : Python, SQL/PLSQL, R, SAS, HTML/CSS, JavaScript, PHP, SVG
+        - **Logiciels** : Sphinx, Microsoft Office (Excel, Access, PowerPoint, Power BI), ArcGIS, QGIS, FME, pgAdmin
 
-##### Programmation
-- **Langages** : Python, SQL/PLSQL, R, SAS, HTML/CSS, JavaScript, PHP, SVG
-- **Logiciels** : Sphinx, Microsoft Office (Excel, Access, PowerPoint, Power BI), ArcGIS, QGIS, FME, pgAdmin
+        #### Formations
+        - **BUT Science des Données (SD)**  
+          *Université de Perpignan, depuis septembre 2022*
 
----
+        #### Expériences et Projets
+        - **Création d'une application web GPS** *(Octobre 2023 à janvier 2024 - IUT Carcassonne)*  
+          - Application web avec gestion de compte personnel  
+          - Visualisation cartographique (SIG), itinéraires, et points de repère
+          
+        #### Langues
+        - **Anglais** : B2  
+        - **Espagnol** : B1
 
-#### Formations
-
-- **BUT Science des Données (SD)**  
-  *Université de Perpignan, depuis septembre 2022*  
-- **Baccalauréat général**  
-  *Lycée Ernest Ferroul, 2022*  
-  Mention Bien | Mathématiques, Numérique Science Informatique, Mathématiques expertes  
-
----
-
-#### Expériences et Projets
-
-##### Mise en place d'un Service SIG *(Stage + CDD)*  
-*Avril 2024 à août 2024 - Communauté des Communes La Domitienne (Vendres)*  
-- Diagnostic des données internes et externes  
-- Analyse des besoins métiers  
-- Recherche d’exemples d’organisation similaires  
-
-##### Création d'une application web GPS  
-*Octobre 2023 à janvier 2024 - IUT Carcassonne*  
-- Application web avec gestion de compte personnel  
-- Visualisation cartographique (SIG), itinéraires, et points de repère  
-- **Technologies** : MySQL, PHP, JavaScript  
-
-##### Mise en œuvre d'une enquête  
-*Octobre 2022 à janvier 2023 - Carcassonne Agglo*  
-- Élaboration d’un questionnaire et saisie des réponses  
-- Analyse statistique (Sphinx) et rédaction de rapport  
-- Préconisations au commanditaire  
-
----
-
-#### Langues
-
-- **Anglais** : B2  
-- **Espagnol** : B1  
-
----
-
-#### Centres d'Intérêt
-
-- **Caisse à savon** : Construction et course de véhicules sans moteur  
-- **Moto**  
-- **Électronique/Informatique** : Objets connectés, analyse statistique, SIG  
-- **Histoire** : XIXe et XXe siècles  
-
----
-
-*Site web basé sur un thème Hacker.*
-
----
-
-## Badge
-
-Une section pour les fichiers associés aux certifications et badges.
-
----
-
-## Détails des Classes
-
-### Classe Portfolio
-
-Description de la classe Portfolio.
-
-### Classe Page
-
-Description de la classe Page.
-
-### Classe Projet
-
-Description de la classe Projet.
-
-### Classe CV
-
-Description de la classe CV.
-
-### Classe Badge
-
-Description de la classe Badge.
+        #### Centres d'Intérêt
+        - **Caisse à savon** : Construction et course de véhicules sans moteur
+    </div>
+    
+</body>
+</html>
