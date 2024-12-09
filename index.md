@@ -8,6 +8,7 @@ Le **Portfolio** contient :
 - [Projet](#projet)
 - [CV](#cv)
 - [Voir le model de Mermaid initial](https://jean-antoine-gimenez.github.io/travaux/travaux.html)
+- [Voir les projet un peu plus détaillé ](https://jean-antoine-gimenez.github.io/travaux/projet.html)
 
 ### Projet
 
