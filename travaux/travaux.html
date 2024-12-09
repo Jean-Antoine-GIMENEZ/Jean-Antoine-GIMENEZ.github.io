@@ -1,7 +1,6 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <!-- Meta tags for proper rendering and responsive design -->
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -64,30 +63,21 @@
 
     <pre class="mermaid">
       classDiagram
-        Portfolio --> Page : contient
         Portfolio --> Projet : contient
-        Portfolio --> CV : contient
         Portfolio --> Badge : contient
 
         class Portfolio {
-            +String titre
-            +String description
-            +String theme
-        }
-        class Page {
-            +String nom
-            +String contenu
+            +String Présentation
+            +String Projet
+            +String CV
         }
         class Projet {
             +String nom
             +String description
             +String url
         }
-        class CV {
-            +String fichier
-        }
         class Badge {
-            +String fichier
+            +String <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">Voir tout les badges</a>
         }
     </pre>
   </div>
