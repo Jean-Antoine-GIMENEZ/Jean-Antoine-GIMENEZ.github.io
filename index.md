@@ -7,7 +7,7 @@ Ce GitHub est principalement destiné à présenter mon CV et mes projets univer
 Le **Portfolio** contient :
 - [Projet](#projet)
 - [CV](#cv)
-- [Voir le modele de Mermaid initial](https://jean-antoine-gimenez.github.io/travaux/travaux.html)
+- [Voir le model de Mermaid initial](https://jean-antoine-gimenez.github.io/travaux/travaux.html)
 
 ### Projet
 
