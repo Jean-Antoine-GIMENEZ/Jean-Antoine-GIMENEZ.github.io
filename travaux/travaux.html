@@ -1,41 +1,100 @@
 <!doctype html>
 <html lang="en">
-  <body>
+<head>
+  <!-- Meta tags for proper rendering and responsive design -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Portfolio Diagram</title>
+  <a href="https://jean-antoine-gimenez.github.io/">retourner a l'accueil</a>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jekyll-theme-midnight@0.1.2/assets/css/main.css">
+
+  <script type="module">
+    import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
+    mermaid.initialize({ startOnLoad: true });
+  </script>
+
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #2e3b4e;
+      color: #f0f0f0;
+    }
+
+    .container {
+      max-width: 960px;
+      margin: 30px auto;
+      padding: 20px;
+      background-color: #3c4756;
+      border-radius: 8px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    }
+
+    h1 {
+      font-size: 2rem;
+      color: #4db5ff;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    pre.mermaid {
+      background-color: #2e3b4e;
+      border: 1px solid #4db5ff;
+      padding: 20px;
+      border-radius: 8px;
+      overflow-x: auto;
+      white-space: nowrap;
+    }
+
+    .footer {
+      text-align: center;
+      padding: 20px;
+      background-color: #2e3b4e;
+      border-top: 1px solid #4db5ff;
+      color: #f0f0f0;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h1>Portfolio UML Diagram</h1>
+
     <pre class="mermaid">
-classDiagram
-    Portfolio --> Page : contient
-    Portfolio --> Projet : contient
-    Portfolio --> CV : contient
-    Portfolio --> Badge : contient
+      classDiagram
+        Portfolio --> Page : contient
+        Portfolio --> Projet : contient
+        Portfolio --> CV : contient
+        Portfolio --> Badge : contient
 
-    class Portfolio {
-        +String titre
-        +String description
-        +String theme
-    }
-    class Page {
-        +String nom
-        +String contenu
-    }
-    class Projet {
-        +String nom
-        +String description
-        +String url
-    }
-    class CV {
-        +String fichier
-    }
-    class Badge {
-        +String fichier
-    }
-
+        class Portfolio {
+            +String titre
+            +String description
+            +String theme
+        }
+        class Page {
+            +String nom
+            +String contenu
+        }
+        class Projet {
+            +String nom
+            +String description
+            +String url
+        }
+        class CV {
+            +String fichier
+        }
+        class Badge {
+            +String fichier
+        }
     </pre>
-    <script type="module">
-      import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
-      mermaid.initialize({ startOnLoad: true });
-    </script>
-  </body>
+  </div>
+
+  <div class="footer">
+    <p>&copy; 2024 Portfolio Project | Designed with ❤️</p>
+  </div>
+
+</body>
 </html>
-
-
-
