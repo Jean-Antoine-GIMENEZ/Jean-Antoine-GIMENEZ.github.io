@@ -7,7 +7,7 @@ Ce GitHub est principalement destiné à présenter mon CV et mes projets univer
 Le **Portfolio** contient :
 - [Projet](#projet)
 - [CV](#cv)
-- [Google]([https://www.google.com](https://jean-antoine-gimenez.github.io/travaux/travaux.html))
+- [Google]([https://www.google.com](https://jean-antoine-gimenez.github.io/travaux/travaux.html)]))
 
 ### Projet
 
